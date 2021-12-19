@@ -9,3 +9,5 @@ The plan is to have the following examples
 - File upload
 - File upload to S3
 - Picture upload and cropping
+- Showing a Bootstrap modal
+- Using a date picker
