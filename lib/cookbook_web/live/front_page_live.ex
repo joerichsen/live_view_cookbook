@@ -8,7 +8,7 @@ defmodule CookbookWeb.FrontPageLive do
   end
 
   def mount(_params, _session, socket) do
-    readme = File.read!("README.md")
+    readme = File.read!(Path.join(:code.priv_dir(:cookbook), "README.md"))
     html = Earmark.as_html!(readme)
     {:ok, assign(socket, :readme, html)}
   end
