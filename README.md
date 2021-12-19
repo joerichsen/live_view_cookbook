@@ -11,3 +11,6 @@ The plan is to have the following examples
 - Picture upload and cropping
 - Showing a Bootstrap modal
 - Using a date picker
+- Navbar
+
+Feel free to add a PR if you think that an example is missing.
