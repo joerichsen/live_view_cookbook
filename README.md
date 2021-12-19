@@ -1,4 +1,6 @@
-# This repo contains examples of using Phoenix LiveView
+# Welcome to the Phoenix LiveView Cookbook
+
+### This repo contains examples of using Phoenix LiveView
 
 The plan is to have the following examples
 
