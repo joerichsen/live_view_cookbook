@@ -4,7 +4,7 @@ defmodule CookbookWeb.FrontPageLive do
   def render(assigns) do
     ~H"""
     <h1>Welcome to the Phoenix LiveView Cookbook</h1>
-    <h3>This contains examples of using Phoenix LiveView</h3>
+    <h3>This contains examples of using <a href="https://github.com/phoenixframework/phoenix_live_view">Phoenix LiveView</a></h3>
 
     <div class="row">
       <div class="col">Hello World</div>
@@ -60,7 +60,10 @@ defmodule CookbookWeb.FrontPageLive do
     </div>
 
     <div class="row pt-5">
-      <div class="col">Feel free to add a PR if you think that an example is missing.</div>
+      <div class="col">
+        Feel free to add a PR if you think that an example is missing.
+        Check out the <a href="https://github.com/joerichsen/live_view_cookbook/">GitHub repo.</a>
+      </div>
     </div>
     """
   end
