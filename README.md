@@ -2,9 +2,11 @@
 
 ### This repo contains examples of using Phoenix LiveView
 
+Check out the live demo at https://liveviewcookbook.dev/
+
 The plan is to have the following examples
 
-- Hello World
+- [Hello World](https://liveviewcookbook.dev/hello_world)
 - Form with validation
 - Dynamic nested form
 - Multistep wizard form
