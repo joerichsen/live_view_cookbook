@@ -18,8 +18,7 @@ defmodule CookbookWeb.Router do
   scope "/", CookbookWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
-
+    live "/", FrontPageLive
     live "/hello_world", HelloWorldLive
   end
 
