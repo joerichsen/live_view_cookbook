@@ -1,1 +1,1 @@
-# live_view_cookbook
+# This repo contains examples of using Phoenix LiveView
