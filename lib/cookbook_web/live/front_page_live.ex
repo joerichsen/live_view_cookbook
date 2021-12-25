@@ -18,6 +18,7 @@ defmodule CookbookWeb.FrontPageLive do
       <div class="col">Progress</div>
       <div class="col">
         <a href="/progress" class="btn btn-outline-success ml-5">Demo</a>
+        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/progress_live.ex" class="btn btn-outline-primary">Code</a>
       </div>
     </div>
 
