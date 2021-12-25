@@ -20,6 +20,7 @@ defmodule CookbookWeb.Router do
 
     live "/", FrontPageLive
     live "/hello_world", HelloWorldLive
+    live "/progress", ProgressLive
   end
 
   # Other scopes may use custom stacks.
