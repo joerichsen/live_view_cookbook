@@ -6,8 +6,8 @@ defmodule CookbookWeb.FrontPageLive do
     <h1>Welcome to the Phoenix LiveView Cookbook</h1>
     <h4>This contains examples of using <a href="https://github.com/phoenixframework/phoenix_live_view">Phoenix LiveView</a></h4>
 
-    <div class="row">
-      <div class="col">Hello World</div>
+    <div class="row pt-3">
+      <div class="col-3">Hello World</div>
       <div class="col">
         <a href="/hello_world" class="btn btn-outline-success btn-sm ml-5">Demo</a>
         <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/hello_world_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
@@ -15,7 +15,7 @@ defmodule CookbookWeb.FrontPageLive do
     </div>
 
     <div class="row pt-3">
-      <div class="col">Progress</div>
+      <div class="col-3">Progress</div>
       <div class="col">
         <a href="/progress" class="btn btn-outline-success btn-sm ml-5">Demo</a>
         <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/progress_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
@@ -23,7 +23,7 @@ defmodule CookbookWeb.FrontPageLive do
     </div>
 
     <div class="row pt-3">
-      <div class="col">Form with validation</div>
+      <div class="col-3">Form with validation</div>
       <div class="col">
         <a href="/form_with_validation" class="btn btn-outline-success btn-sm ml-5">Demo</a>
         <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/front_page_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
@@ -32,42 +32,42 @@ defmodule CookbookWeb.FrontPageLive do
     </div>
 
     <div class="row pt-3">
-      <div class="col">Dynamic nested form</div>
+      <div class="col-3">Dynamic nested form</div>
       <div class="col">TODO</div>
     </div>
 
     <div class="row pt-3">
-      <div class="col">Multistep wizard form</div>
+      <div class="col-3">Multistep wizard form</div>
       <div class="col">TODO</div>
     </div>
 
     <div class="row pt-3">
-      <div class="col">File upload</div>
+      <div class="col-3">File upload</div>
       <div class="col">TODO</div>
     </div>
 
     <div class="row pt-3">
-      <div class="col">File upload to S3</div>
+      <div class="col-3">File upload to S3</div>
       <div class="col">TODO</div>
     </div>
 
     <div class="row pt-3">
-      <div class="col">Picture upload and cropping</div>
+      <div class="col-3">Picture upload and cropping</div>
       <div class="col">TODO</div>
     </div>
 
     <div class="row pt-3">
-      <div class="col">Showing a Bootstrap modal</div>
+      <div class="col-3">Showing a Bootstrap modal</div>
       <div class="col">TODO</div>
     </div>
 
     <div class="row pt-3">
-      <div class="col">Using a date picker</div>
+      <div class="col-3">Using a date picker</div>
       <div class="col">TODO</div>
     </div>
 
     <div class="row pt-3">
-      <div class="col">Navbar</div>
+      <div class="col-3">Navbar</div>
       <div class="col">TODO</div>
     </div>
 
