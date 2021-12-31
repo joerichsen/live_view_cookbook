@@ -6,18 +6,24 @@ defmodule CookbookWeb.FormWithValidationLive do
 
   def render(assigns) do
     ~H"""
-    <.form let={f} for={@changeset} phx-change="validate" phx-submit="save">
-      <%= label f, :title %>
-      <%= text_input f, :title, class: "form-control", placeholder: "Enter title" %>
-      <%= error_tag f, :title %>
+    <.form let={f} for={@changeset} phx-change="validate" phx-submit="save" novalidate>
+      <div class="mb-3">
+        <%= label f, :title %>
+        <%= text_input f, :title, class: "form-control", placeholder: "Enter title" %>
+        <%= error_tag f, :title %>
+      </div>
 
-      <%= label f, :summary %>
-      <%= textarea f, :summary, class: "form-control", placeholder: "Add a short summary" %>
-      <%= error_tag f, :summary %>
+      <div class="mb-3">
+        <%= label f, :summary %>
+        <%= textarea f, :summary, class: "form-control", placeholder: "Add a short summary" %>
+        <%= error_tag f, :summary %>
+      </div>
 
-      <%= label f, :pages %>
-      <%= number_input f, :pages, class: "form-control", placeholder: "Enter the number of pages" %>
-      <%= error_tag f, :pages %>
+      <div class="mb-3">
+        <%= label f, :pages %>
+        <%= number_input f, :pages, class: "form-control", placeholder: "Enter the number of pages" %>
+        <%= error_tag f, :pages %>
+      </div>
 
       <button type="submit" class="btn btn-primary btn-sm">Add Book</button>
     </.form>
