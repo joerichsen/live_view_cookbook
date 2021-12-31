@@ -4,29 +4,30 @@ defmodule CookbookWeb.FrontPageLive do
   def render(assigns) do
     ~H"""
     <h1>Welcome to the Phoenix LiveView Cookbook</h1>
-    <h3>This contains examples of using <a href="https://github.com/phoenixframework/phoenix_live_view">Phoenix LiveView</a></h3>
+    <h4>This contains examples of using <a href="https://github.com/phoenixframework/phoenix_live_view">Phoenix LiveView</a></h4>
 
     <div class="row">
       <div class="col">Hello World</div>
       <div class="col">
-        <a href="/hello_world" class="btn btn-outline-success ml-5">Demo</a>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/hello_world_live.ex" class="btn btn-outline-primary">Code</a>
+        <a href="/hello_world" class="btn btn-outline-success btn-sm ml-5">Demo</a>
+        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/hello_world_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
       </div>
     </div>
 
     <div class="row pt-3">
       <div class="col">Progress</div>
       <div class="col">
-        <a href="/progress" class="btn btn-outline-success ml-5">Demo</a>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/progress_live.ex" class="btn btn-outline-primary">Code</a>
+        <a href="/progress" class="btn btn-outline-success btn-sm ml-5">Demo</a>
+        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/progress_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
       </div>
     </div>
 
     <div class="row pt-3">
       <div class="col">Form with validation</div>
       <div class="col">
-        <a href="/form_with_validation" class="btn btn-outline-success ml-5">Demo</a>
-        <a href="https://github.com/joerichsen/live_view_cookbook/commit/032298835e028ea41df4ab5dc4659af1f3c91474" class="btn btn-outline-primary">Code</a>
+        <a href="/form_with_validation" class="btn btn-outline-success btn-sm ml-5">Demo</a>
+        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/front_page_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
+        <a href="https://github.com/joerichsen/live_view_cookbook/commit/032298835e028ea41df4ab5dc4659af1f3c91474" class="btn btn-outline-primary btn-sm">Initial Commit</a>
       </div>
     </div>
 
