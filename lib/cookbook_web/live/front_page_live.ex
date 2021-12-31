@@ -24,7 +24,9 @@ defmodule CookbookWeb.FrontPageLive do
 
     <div class="row pt-3">
       <div class="col">Form with validation</div>
-      <div class="col">TODO</div>
+      <div class="col">
+        <a href="/form_with_validation" class="btn btn-outline-success ml-5">Demo</a>
+      </div>
     </div>
 
     <div class="row pt-3">
