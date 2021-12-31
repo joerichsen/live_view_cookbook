@@ -26,6 +26,7 @@ defmodule CookbookWeb.FrontPageLive do
       <div class="col">Form with validation</div>
       <div class="col">
         <a href="/form_with_validation" class="btn btn-outline-success ml-5">Demo</a>
+        <a href="https://github.com/joerichsen/live_view_cookbook/commit/032298835e028ea41df4ab5dc4659af1f3c91474" class="btn btn-outline-primary">Code</a>
       </div>
     </div>
 
