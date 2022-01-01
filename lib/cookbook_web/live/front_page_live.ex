@@ -86,7 +86,7 @@ defmodule CookbookWeb.FrontPageLive do
     <div class="row pt-5">
       <div class="col">
         Feel free to add a PR if you think that an example is missing.
-        Check out the <a href="https://github.com/joerichsen/live_view_cookbook/">GitHub repo.</a>
+        Check out the <a href="https://github.com/joerichsen/live_view_cookbook/">GitHub repo</a>.
       </div>
     </div>
     """
