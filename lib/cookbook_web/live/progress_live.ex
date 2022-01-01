@@ -21,7 +21,7 @@ defmodule CookbookWeb.ProgressLive do
 
   def mount(_params, _session, socket) do
     # Create a pubsub topic that is unique for this LiveView process
-    task_topic = "task-" <> Ecto.UUID.generate
+    task_topic = "task-" <> Ecto.UUID.generate()
     Phoenix.PubSub.subscribe(Cookbook.PubSub, task_topic)
 
     {:ok,
