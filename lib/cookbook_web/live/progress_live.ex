@@ -41,15 +41,18 @@ defmodule CookbookWeb.ProgressLive do
   defp long_running_task(task_topic) do
     # Start another process to do the long running task
     Task.start(fn ->
-      1..@number_of_slow_function_calls |> Enum.each(fn _ -> slow_function(task_topic) end)
+      1..@number_of_slow_function_calls
+      |> Enum.each(fn _ ->
+        slow_function()
+        # Done - publish that the task is complete
+        Phoenix.PubSub.broadcast(Cookbook.PubSub, task_topic, :completed)
+      end)
     end)
   end
 
-  defp slow_function(task_topic) do
+  defp slow_function() do
     # Sleep between 10 and 50 ms to simulate a slow function
     10..50 |> Enum.random() |> Process.sleep()
-    # Done - publish that the task is complete
-    Phoenix.PubSub.broadcast(Cookbook.PubSub, task_topic, :completed)
   end
 
   def handle_info(:completed, socket) do
