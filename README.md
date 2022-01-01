@@ -2,7 +2,7 @@
 
 ### This repo contains examples of using Phoenix LiveView
 
-Check out the live demo at https://liveviewcookbook.dev/
+Check out the live demos at https://liveviewcookbook.dev/
 
 This contains examples of using Phoenix LiveView
 
