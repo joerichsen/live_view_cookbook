@@ -3,11 +3,21 @@ defmodule CookbookWeb.FlashLive do
 
   def render(assigns) do
     ~H"""
-    <button phx-click="show-flash-success" class="btn btn-success">Try me!</button>
-    <button phx-click="show-flash-fail" class="btn btn-danger">Press this dangerous button</button>
+    <div class="row">
+      <div class="col">
+        <button phx-click="show-flash-success" class="btn btn-success">Try me!</button>
+      </div>
+      <div class="col-8">
+        <button phx-click="show-flash-fail" class="btn btn-danger">Press this dangerous button</button>
+      </div>
+    </div>
 
     <%= if @flash != %{} do %>
-      <button phx-click="clear-flash" class="btn btn-primary">Clear the flash messages</button>
+      <div class="row mt-3">
+        <div class="col">
+          <button phx-click="clear-flash" class="btn btn-primary">Clear the flash messages</button>
+        </div>
+      </div>
     <% end %>
     """
   end
