@@ -32,6 +32,13 @@ defmodule CookbookWeb.FrontPageLive do
     </div>
 
     <div class="row pt-3">
+      <div class="col-3">Displaying flash messages</div>
+      <div class="col">
+        <a href="/flash" class="btn btn-outline-success btn-sm ml-5">Demo</a>
+      </div>
+    </div>
+
+    <div class="row pt-3">
       <div class="col-3">Dynamic nested form</div>
       <div class="col">TODO</div>
     </div>
