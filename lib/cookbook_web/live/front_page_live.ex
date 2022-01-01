@@ -43,6 +43,8 @@ defmodule CookbookWeb.FrontPageLive do
       <div class="col-3">Showing a Bootstrap modal</div>
       <div class="col">
         <%= live_redirect "Demo", to: "/modal", class: "btn btn-outline-success btn-sm ml-5" %>
+        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/modal_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
+        <a href="https://github.com/joerichsen/live_view_cookbook/commit/0fdc7072ff9df7dbac3ad90801764d0f146499bd" class="btn btn-outline-primary btn-sm">Initial Commit</a>
       </div>
     </div>
 
