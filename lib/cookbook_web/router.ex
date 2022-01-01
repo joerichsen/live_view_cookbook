@@ -23,6 +23,7 @@ defmodule CookbookWeb.Router do
     live "/progress", ProgressLive
     live "/form_with_validation", FormWithValidationLive
     live "/flash", FlashLive
+    live "/modal", ModalLive
   end
 
   # Other scopes may use custom stacks.

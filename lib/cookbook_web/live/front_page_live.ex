@@ -40,6 +40,13 @@ defmodule CookbookWeb.FrontPageLive do
     </div>
 
     <div class="row pt-3">
+      <div class="col-3">Showing a Bootstrap modal</div>
+      <div class="col">
+        <%= live_redirect "Demo", to: "/modal", class: "btn btn-outline-success btn-sm ml-5" %>
+      </div>
+    </div>
+
+    <div class="row pt-3">
       <div class="col-3">Dynamic nested form</div>
       <div class="col">TODO</div>
     </div>
@@ -61,11 +68,6 @@ defmodule CookbookWeb.FrontPageLive do
 
     <div class="row pt-3">
       <div class="col-3">Picture upload and cropping</div>
-      <div class="col">TODO</div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Showing a Bootstrap modal</div>
       <div class="col">TODO</div>
     </div>
 
