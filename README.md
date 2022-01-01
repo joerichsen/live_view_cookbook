@@ -4,19 +4,19 @@
 
 Check out the live demo at https://liveviewcookbook.dev/
 
-The plan is to have the following examples
+This contains examples of using Phoenix LiveView
 
 - [Hello World](https://liveviewcookbook.dev/hello_world)
 - [Progress](https://liveviewcookbook.dev/progress)
 - [Form with validation](https://liveviewcookbook.dev/form_with_validation)
 - [Displaying flash messages](https://liveviewcookbook.dev/flash)
 - [Showing a Bootstrap modal](https://liveviewcookbook.dev/modal)
-- Dynamic nested form
-- Multistep wizard form
-- File upload
-- File upload to S3
-- Picture upload and cropping
-- Using a date picker
-- Navbar
+- Dynamic nested form (TODO)
+- Multistep wizard form (TODO)
+- File upload (TODO)
+- File upload to S3 (TODO)
+- Picture upload and cropping (TODO)
+- Using a date picker (TODO)
+- Navbar (TODO)
 
 Feel free to add a PR if you think that an example is missing.
