@@ -9,7 +9,7 @@ defmodule CookbookWeb.FrontPageLive do
     <div class="row pt-3">
       <div class="col-3">Hello World</div>
       <div class="col">
-        <a href="/hello_world" class="btn btn-outline-success btn-sm ml-5">Demo</a>
+        <%= live_redirect "Demo", to: "/hello_world", class: "btn btn-outline-success btn-sm ml-5" %>
         <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/hello_world_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
       </div>
     </div>
@@ -17,7 +17,7 @@ defmodule CookbookWeb.FrontPageLive do
     <div class="row pt-3">
       <div class="col-3">Progress</div>
       <div class="col">
-        <a href="/progress" class="btn btn-outline-success btn-sm ml-5">Demo</a>
+        <%= live_redirect "Demo", to: "/progress", class: "btn btn-outline-success btn-sm ml-5" %>
         <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/progress_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
       </div>
     </div>
@@ -25,7 +25,7 @@ defmodule CookbookWeb.FrontPageLive do
     <div class="row pt-3">
       <div class="col-3">Form with validation</div>
       <div class="col">
-        <a href="/form_with_validation" class="btn btn-outline-success btn-sm ml-5">Demo</a>
+        <%= live_redirect "Demo", to: "/form_with_validation", class: "btn btn-outline-success btn-sm ml-5" %>
         <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/form_with_validation_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
         <a href="https://github.com/joerichsen/live_view_cookbook/commit/032298835e028ea41df4ab5dc4659af1f3c91474" class="btn btn-outline-primary btn-sm">Initial Commit</a>
       </div>
@@ -34,7 +34,7 @@ defmodule CookbookWeb.FrontPageLive do
     <div class="row pt-3">
       <div class="col-3">Displaying flash messages</div>
       <div class="col">
-        <a href="/flash" class="btn btn-outline-success btn-sm ml-5">Demo</a>
+        <%= live_redirect "Demo", to: "/flash", class: "btn btn-outline-success btn-sm ml-5" %>
         <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/flash_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
       </div>
     </div>
