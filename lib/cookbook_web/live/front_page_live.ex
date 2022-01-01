@@ -35,6 +35,7 @@ defmodule CookbookWeb.FrontPageLive do
       <div class="col-3">Displaying flash messages</div>
       <div class="col">
         <a href="/flash" class="btn btn-outline-success btn-sm ml-5">Demo</a>
+        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/flash_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
       </div>
     </div>
 
