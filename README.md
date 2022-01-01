@@ -7,13 +7,15 @@ Check out the live demo at https://liveviewcookbook.dev/
 The plan is to have the following examples
 
 - [Hello World](https://liveviewcookbook.dev/hello_world)
-- Form with validation
+- [Progress](https://liveviewcookbook.dev/progress)
+- [Form with validation](https://liveviewcookbook.dev/form_with_validation)
+- [Displaying flash messages](https://liveviewcookbook.dev/flash)
+- [Showing a Bootstrap modal](https://liveviewcookbook.dev/modal)
 - Dynamic nested form
 - Multistep wizard form
 - File upload
 - File upload to S3
 - Picture upload and cropping
-- Showing a Bootstrap modal
 - Using a date picker
 - Navbar
 
