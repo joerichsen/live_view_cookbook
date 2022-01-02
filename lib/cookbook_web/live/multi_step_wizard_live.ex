@@ -3,6 +3,8 @@ defmodule CookbookWeb.MultiStepWizardLive do
 
   import Ecto.Changeset
 
+  alias Phoenix.LiveView.JS
+
   alias Cookbook.Books
   alias Cookbook.Books.Book
 
@@ -54,7 +56,7 @@ defmodule CookbookWeb.MultiStepWizardLive do
       <.step step={3} current_step={@current_step} />
     </div>
 
-    <.form let={f} for={@changeset} phx-change="validate" phx-submit="submit" novalidate>
+    <.form let={f} for={@changeset} id="wizard_form" phx-change="validate" phx-submit="submit" novalidate>
       <%= if @current_step == 1 do %>
         <div class="mb-3">
           <%= label f, :title %>
@@ -88,7 +90,7 @@ defmodule CookbookWeb.MultiStepWizardLive do
 
         <div class="col">
           <%= if @current_step < 3 do %>
-            <a phx-click="next_step" class="btn btn-primary">Next</a>
+            <a phx-click={next_step()} class="btn btn-primary">Next</a>
           <% else %>
             <button type="submit" class="btn btn-primary">Add Book</button>
           <% end %>
@@ -156,6 +158,11 @@ defmodule CookbookWeb.MultiStepWizardLive do
       <% end %>
     </div>
     """
+  end
+
+  def next_step do
+    # The trigger change stuff is necessary in order to have LV display the validation error messages
+    JS.dispatch("trigger-change", to: "#wizard_form") |> JS.push("next_step")
   end
 
   defp changeset_for(step, params) do

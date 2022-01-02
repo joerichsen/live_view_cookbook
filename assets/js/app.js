@@ -40,3 +40,4 @@ window.liveSocket = liveSocket
 
 window.addEventListener("display-block", e => e.target.style.display = 'block')
 window.addEventListener("display-none", e => e.target.style.display = 'none')
+window.addEventListener("trigger-change", e => e.target.querySelectorAll("input,textarea,select")[1].dispatchEvent(new Event("input", {bubbles: true})))
