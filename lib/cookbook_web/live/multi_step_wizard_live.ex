@@ -148,7 +148,7 @@ defmodule CookbookWeb.MultiStepWizardLive do
     end
   end
 
-  def step(assigns) do
+  defp step(assigns) do
     ~H"""
     <div class="col fs-3">
       <%= if assigns.current_step == assigns.step do %>
@@ -160,7 +160,7 @@ defmodule CookbookWeb.MultiStepWizardLive do
     """
   end
 
-  def next_step do
+  defp next_step do
     # The trigger change stuff is necessary in order to have LV display the validation error messages
     JS.dispatch("trigger-change", to: "#wizard_form") |> JS.push("next_step")
   end
