@@ -24,6 +24,7 @@ defmodule CookbookWeb.Router do
     live "/form_with_validation", FormWithValidationLive
     live "/flash", FlashLive
     live "/modal", ModalLive
+    live "/multi_step_wizard", MultiStepWizardLive
   end
 
   # Other scopes may use custom stacks.

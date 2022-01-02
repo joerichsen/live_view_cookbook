@@ -49,12 +49,14 @@ defmodule CookbookWeb.FrontPageLive do
     </div>
 
     <div class="row pt-3">
-      <div class="col-3">Dynamic nested form</div>
-      <div class="col">TODO</div>
+      <div class="col-3">Multistep wizard form</div>
+      <div class="col">
+        <%= live_redirect "Demo", to: "/multi_step_wizard", class: "btn btn-outline-success btn-sm ml-5" %>
+      </div>
     </div>
 
     <div class="row pt-3">
-      <div class="col-3">Multistep wizard form</div>
+      <div class="col-3">Dynamic nested form</div>
       <div class="col">TODO</div>
     </div>
 
