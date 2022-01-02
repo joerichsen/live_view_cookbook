@@ -52,6 +52,7 @@ defmodule CookbookWeb.FrontPageLive do
       <div class="col-3">Multistep wizard form</div>
       <div class="col">
         <%= live_redirect "Demo", to: "/multi_step_wizard", class: "btn btn-outline-success btn-sm ml-5" %>
+        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/multi_step_wizard_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
       </div>
     </div>
 
