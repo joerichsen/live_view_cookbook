@@ -42,9 +42,8 @@ defmodule CookbookWeb.XlxsFileUploadAndDisplayLive do
   def handle_event("save", _params, socket) do
     [rows] =
       consume_uploaded_entries(socket, :xlsx_file, fn %{path: path}, _entry ->
-        {:ok, package} = XlsxReader.open(path)
-        {:ok, [{_sheet, rows} | _]} = XlsxReader.sheets(package)
-        rows
+        {:ok, table_id} = Xlsxir.multi_extract(path, 0)
+        Xlsxir.get_list(table_id)
       end)
 
     [headers | rows] = rows
