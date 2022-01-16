@@ -9,7 +9,7 @@ defmodule CookbookWeb.XlxsFileUploadAndDisplayLive do
     </form>
 
     <%= if Enum.any?(@headers) do %>
-      <table class="table mt-5">
+      <table class="table table-striped table-sm mt-5">
         <thead>
           <tr>
             <%= for header <- @headers do %>
