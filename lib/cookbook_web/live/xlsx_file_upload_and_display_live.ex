@@ -5,7 +5,7 @@ defmodule CookbookWeb.XlxsFileUploadAndDisplayLive do
     ~H"""
     <form id="upload-form" phx-submit="save" phx-change="validate">
       <%= live_file_input @uploads.xlsx_file %>
-      <button type="submit" class="btn btn-primary">Upload XLSX file</button>
+      <button type="submit" class="btn btn-primary btn-sm">Upload XLSX file</button>
     </form>
 
     <%= if Enum.any?(@headers) do %>
