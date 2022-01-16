@@ -55,5 +55,6 @@ defmodule CookbookWeb.XlxsFileUploadAndDisplayLive do
   defp format(val) when is_number(val), do: val
   defp format(val) when is_boolean(val), do: val
   defp format({_year, _month, _day} = val), do: Date.from_erl!(val)
+  defp format(nil), do: ""
   defp format(_), do: "UNKNOWN TYPE"
 end
