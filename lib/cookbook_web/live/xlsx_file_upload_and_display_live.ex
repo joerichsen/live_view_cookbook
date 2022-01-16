@@ -20,8 +20,8 @@ defmodule CookbookWeb.XlxsFileUploadAndDisplayLive do
         <tbody>
           <%= for row <- @rows do %>
             <tr>
-              <%= for col <- row do %>
-                <td><%= col %></td>
+              <%= for cell <- row do %>
+                <td><%= format(cell) %></td>
               <% end %>
             </tr>
           <% end %>
@@ -50,4 +50,10 @@ defmodule CookbookWeb.XlxsFileUploadAndDisplayLive do
 
     {:noreply, socket |> assign(headers: headers, rows: rows)}
   end
+
+  defp format(val) when is_binary(val), do: val
+  defp format(val) when is_number(val), do: val
+  defp format(val) when is_boolean(val), do: val
+  defp format({_year, _month, _day} = val), do: Date.from_erl!(val)
+  defp format(_), do: "UNKNOWN TYPE"
 end
