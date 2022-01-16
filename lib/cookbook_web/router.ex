@@ -25,6 +25,7 @@ defmodule CookbookWeb.Router do
     live "/flash", FlashLive
     live "/modal", ModalLive
     live "/multi_step_wizard", MultiStepWizardLive
+    live "/xlsx_file_upload_and_display", XlxsFileUploadAndDisplayLive
   end
 
   # Other scopes may use custom stacks.

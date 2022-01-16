@@ -57,6 +57,13 @@ defmodule CookbookWeb.FrontPageLive do
     </div>
 
     <div class="row pt-3">
+      <div class="col-3">Upload and display a XLSX file</div>
+      <div class="col">
+        <%= live_redirect "Demo", to: "/xlsx_file_upload_and_display", class: "btn btn-outline-success btn-sm ml-5" %>
+      </div>
+    </div>
+
+    <div class="row pt-3">
       <div class="col-3">Dynamic nested form</div>
       <div class="col">TODO</div>
     </div>
