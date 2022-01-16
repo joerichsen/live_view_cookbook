@@ -43,7 +43,7 @@ defmodule CookbookWeb.XlxsFileUploadAndDisplayLive do
     [rows] =
       consume_uploaded_entries(socket, :xlsx_file, fn %{path: path}, _entry ->
         {:ok, package} = XlsxReader.open(path)
-        {:ok, [{_sheet, rows}]} = XlsxReader.sheets(package)
+        {:ok, [{_sheet, rows} | _]} = XlsxReader.sheets(package)
         rows
       end)
 
