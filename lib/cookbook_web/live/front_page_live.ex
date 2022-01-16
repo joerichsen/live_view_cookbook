@@ -60,6 +60,7 @@ defmodule CookbookWeb.FrontPageLive do
       <div class="col-3">Upload and display a XLSX file</div>
       <div class="col">
         <%= live_redirect "Demo", to: "/xlsx_file_upload_and_display", class: "btn btn-outline-success btn-sm ml-5" %>
+        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/xlsx_file_upload_and_display_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
       </div>
     </div>
 
