@@ -65,6 +65,14 @@ defmodule CookbookWeb.FrontPageLive do
     </div>
 
     <div class="row pt-3">
+      <div class="col-3">Keep LiveView state across redirects</div>
+      <div class="col">
+        <%= live_redirect "Demo", to: "/keep_liveview_across_redirect1", class: "btn btn-outline-success btn-sm ml-5" %>
+        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/keep_liveview_across_redirect_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
+      </div>
+    </div>
+
+    <div class="row pt-3">
       <div class="col-3">Dynamic nested form</div>
       <div class="col">TODO</div>
     </div>
