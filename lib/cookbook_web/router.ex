@@ -28,6 +28,7 @@ defmodule CookbookWeb.Router do
     live "/xlsx_file_upload_and_display", XlxsFileUploadAndDisplayLive
     live "/keep_liveview_across_redirect1", LiveView1
     live "/keep_liveview_across_redirect2", LiveView2
+    live "/markdown_preview", MarkdownPreviewLive
   end
 
   # Other scopes may use custom stacks.
