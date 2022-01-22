@@ -6,9 +6,12 @@ defmodule CookbookWeb.MarkdownPreviewLive do
 
   def render(assigns) do
     ~H"""
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/monokai.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+
     <div class="row">
 
-      <div class="col">
+      <div class="col-6">
         <h4>Please write a summary using Markdown</h4>
         <.form let={f} for={@changeset} phx-change="change" class="mb-5">
           <div class="mb-3">
@@ -17,7 +20,7 @@ defmodule CookbookWeb.MarkdownPreviewLive do
         </.form>
       </div>
 
-      <div class="col">
+      <div class="col-6">
         <h4>Live preview</h4>
         <%= raw Earmark.as_html!(@changeset.changes[:summary]) %>
       </div>
@@ -32,7 +35,7 @@ defmodule CookbookWeb.MarkdownPreviewLive do
 
   def handle_event("change", %{"book" => params}, socket) do
     changeset = %Book{} |> Books.change_book(params)
-    {:noreply, assign(socket, changeset: changeset)}
+    {:noreply, socket |> push_event("syntax-highlight", %{}) |> assign(changeset: changeset)}
   end
 
   defp initial_summary do
