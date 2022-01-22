@@ -31,7 +31,7 @@ defmodule CookbookWeb.LiveView1 do
     <%= live_render(@socket, EmbeddedLiveView, id: "first_embedded_live_view", sticky: true) %>
 
     <h4>This is an embedded LiveView without the sticky option</h4>
-    <%= live_render(@socket, EmbeddedLiveView, id: "second_embedded_live_view", sticky: false) %>
+    <%= live_render(@socket, EmbeddedLiveView, id: "second_embedded_live_view") %>
 
     <%= live_redirect "Redirect to LiveView 2", to: Routes.live_path(@socket, LiveView2), class: "btn btn-primary" %>
     """
