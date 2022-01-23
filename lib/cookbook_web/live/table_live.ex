@@ -3,7 +3,7 @@ defmodule CookbookWeb.TableLive do
 
   def render(assigns) do
     ~H"""
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <tr>
           <.th field={:name} sort_direction={@sort_direction} sort_by={@sort_by}>Name</.th>
