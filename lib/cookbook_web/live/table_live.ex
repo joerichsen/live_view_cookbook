@@ -6,9 +6,9 @@ defmodule CookbookWeb.TableLive do
     <table class="table">
       <thead>
         <tr>
-          <.th field={:name} sort_direction={@sort_direction}>Name</.th>
-          <.th field={:birthday} sort_direction={@sort_direction}>Birthday</.th>
-          <.th field={:favorite_color} sort_direction={@sort_direction}>Favorite Color</.th>
+          <.th field={:name} sort_direction={@sort_direction} sort_by={@sort_by}>Name</.th>
+          <.th field={:birthday} sort_direction={@sort_direction} sort_by={@sort_by}>Birthday</.th>
+          <.th field={:favorite_color} sort_direction={@sort_direction} sort_by={@sort_by}>Favorite Color</.th>
         </tr>
       </thead>
       <tbody>
@@ -113,7 +113,16 @@ defmodule CookbookWeb.TableLive do
   def th(assigns) do
     ~H"""
     <th phx-click="sort" phx-value-sort_by={@field} phx-value-sort_direction={@sort_direction}>
+
       <%= render_slot(@inner_block) %>
+
+      <%= if @sort_by == @field do %>
+        <%= if @sort_direction == :asc do %>
+          <i class="bi bi-arrow-up-short"></i>
+        <% else %>
+          <i class="bi bi-arrow-down-short"></i>
+        <% end %>
+      <% end %>
     </th>
     """
   end
