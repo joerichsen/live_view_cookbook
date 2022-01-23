@@ -12,7 +12,10 @@ defmodule CookbookWeb.TableLive do
 
       <div class="col">
         <.form let={f} for={@filter_changeset} as="filter" phx-change="filter">
-          <%= text_input f, :q, class: "form-control", placeholder: "Search by name" %>
+          <div class="row">
+            <div class="col"><%= text_input f, :q, class: "form-control", placeholder: "Search by name" %></div>
+            <div class="col"><%= multiple_select f, :favorite_colors, @favorite_colors, class: "form-select" %></div>
+          </div>
         </.form>
       </div>
     </div>
@@ -118,6 +121,15 @@ defmodule CookbookWeb.TableLive do
         socket.assigns.rows
       end
 
+    favorite_colors = socket.assigns.filter_changeset.changes |> Map.get(:favorite_colors)
+
+    filtered_rows =
+      if favorite_colors do
+        filtered_rows |> Enum.filter(&Enum.member?(favorite_colors, &1.favorite_color))
+      else
+        filtered_rows
+      end
+
     assign(socket, filtered_rows: filtered_rows)
   end
 
@@ -162,7 +174,11 @@ defmodule CookbookWeb.TableLive do
   end
 
   defp assign_filter_changeset(socket) do
-    assign(socket, filter_changeset: filter_changeset())
+    assign(socket,
+      filter_changeset: filter_changeset(),
+      favorite_colors:
+        socket.assigns.rows |> Enum.map(& &1.favorite_color) |> Enum.uniq() |> Enum.sort()
+    )
   end
 
   defp page_size_changeset(params) do
@@ -170,7 +186,8 @@ defmodule CookbookWeb.TableLive do
   end
 
   defp filter_changeset(params \\ %{}) do
-    {%{}, %{q: :string}} |> Ecto.Changeset.cast(params, [:q])
+    {%{}, %{favorite_colors: {:array, :string}, q: :string}}
+    |> Ecto.Changeset.cast(params, [:favorite_colors, :q])
   end
 
   defp assign_rows(socket) do
