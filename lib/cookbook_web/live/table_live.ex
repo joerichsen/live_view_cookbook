@@ -64,7 +64,7 @@ defmodule CookbookWeb.TableLive do
         assign(socket, sort_by: sort_by, sort_direction: :asc)
       end
 
-    {:noreply, socket |> sort()}
+    {:noreply, socket |> sort() |> paginate()}
   end
 
   # Dates such as birthdays require special sorting in Elixir
