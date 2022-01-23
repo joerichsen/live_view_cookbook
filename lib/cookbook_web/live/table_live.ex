@@ -9,6 +9,12 @@ defmodule CookbookWeb.TableLive do
           Showing <%= select f, :page_size, [5, 10, 20, 50, 100], class: "form-select mx-1", style: "display: inline; width: 80px" %> per page
         </.form>
       </div>
+
+      <div class="col">
+        <.form let={f} for={@filter_changeset} as="filter" phx-change="filter">
+          <%= text_input f, :q, class: "form-control", placeholder: "Search by name" %>
+        </.form>
+      </div>
     </div>
 
     <table class="table table-striped">
@@ -32,7 +38,7 @@ defmodule CookbookWeb.TableLive do
 
     <div class="row">
       <div class="col">
-        Showing <%= (@page - 1) * @page_size + 1 %> to <%= @page * @page_size %> of <%= length(@rows) %> entries
+        Showing <%= min((@page - 1) * @page_size + 1, length(@filtered_rows)) %> to <%= min(@page * @page_size, length(@filtered_rows)) %> of <%= length(@filtered_rows) %> entries
       </div>
       <div class="col">
         <nav class="float-end">
@@ -55,6 +61,8 @@ defmodule CookbookWeb.TableLive do
       |> assign_rows()
       |> reset_sort_variables()
       |> reset_pagination_variables()
+      |> assign_filter_changeset()
+      |> filter()
       |> sort()
       |> paginate()
 
@@ -79,7 +87,7 @@ defmodule CookbookWeb.TableLive do
         assign(socket, sort_by: sort_by, sort_direction: :asc)
       end
 
-    {:noreply, socket |> assign(page: 1) |> sort() |> paginate()}
+    {:noreply, socket |> assign(page: 1) |> filter() |> sort() |> paginate()}
   end
 
   def handle_event("change_page_size", %{"page_size" => params}, socket) do
@@ -91,25 +99,51 @@ defmodule CookbookWeb.TableLive do
      |> paginate()}
   end
 
+  def handle_event("filter", %{"filter" => params}, socket) do
+    {:noreply,
+     socket
+     |> assign(filter_changeset: filter_changeset(params))
+     |> filter()
+     |> sort()
+     |> paginate()}
+  end
+
+  defp filter(socket) do
+    q = socket.assigns.filter_changeset.changes |> Map.get(:q)
+
+    filtered_rows =
+      if q do
+        socket.assigns.rows |> Enum.filter(&String.match?(&1.name, ~r/#{q}/i))
+      else
+        socket.assigns.rows
+      end
+
+    assign(socket, filtered_rows: filtered_rows)
+  end
+
   # Dates such as birthdays require special sorting in Elixir
   defp sort(%{assigns: %{sort_direction: sort_direction, sort_by: :birthday}} = socket) do
     rows =
-      socket.assigns.rows
+      socket.assigns.filtered_rows
       |> Enum.sort_by(&Map.get(&1, socket.assigns.sort_by), {sort_direction, Date})
 
-    assign(socket, rows: rows)
+    assign(socket, filtered_rows: rows)
   end
 
   defp sort(%{assigns: %{sort_direction: sort_direction}} = socket) do
     rows =
-      socket.assigns.rows |> Enum.sort_by(&Map.get(&1, socket.assigns.sort_by), sort_direction)
+      socket.assigns.filtered_rows
+      |> Enum.sort_by(&Map.get(&1, socket.assigns.sort_by), sort_direction)
 
-    assign(socket, rows: rows)
+    assign(socket, filtered_rows: rows)
   end
 
   defp paginate(%{assigns: %{page: page, page_size: page_size}} = socket) do
-    total_pages = ceil(length(socket.assigns.rows) / page_size)
-    rows_on_this_page = socket.assigns.rows |> Enum.slice((page - 1) * page_size, page_size)
+    total_pages = ceil(length(socket.assigns.filtered_rows) / page_size)
+
+    rows_on_this_page =
+      socket.assigns.filtered_rows |> Enum.slice((page - 1) * page_size, page_size)
+
     assign(socket, total_pages: total_pages, rows_on_this_page: rows_on_this_page)
   end
 
@@ -127,8 +161,16 @@ defmodule CookbookWeb.TableLive do
     )
   end
 
+  defp assign_filter_changeset(socket) do
+    assign(socket, filter_changeset: filter_changeset())
+  end
+
   defp page_size_changeset(params) do
     {%{}, %{page_size: :integer}} |> Ecto.Changeset.cast(params, [:page_size])
+  end
+
+  defp filter_changeset(params \\ %{}) do
+    {%{}, %{q: :string}} |> Ecto.Changeset.cast(params, [:q])
   end
 
   defp assign_rows(socket) do
