@@ -29,6 +29,8 @@ defmodule CookbookWeb.Router do
     live "/keep_liveview_across_redirect1", LiveView1
     live "/keep_liveview_across_redirect2", LiveView2
     live "/markdown_preview", MarkdownPreviewLive
+    live "/full_calendar", FullCalendarLive
+    get "/events", EventController, :index
   end
 
   # Other scopes may use custom stacks.
