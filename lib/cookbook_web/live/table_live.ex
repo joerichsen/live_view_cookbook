@@ -6,7 +6,7 @@ defmodule CookbookWeb.TableLive do
     <div class="row">
       <div class="col">
         <.form let={f} for={@page_size_changeset} as="page_size" phx-change="change_page_size">
-          <%= select f, :page_size, [5, 10, 20, 50, 100], class: "form-select" %>
+          Showing <%= select f, :page_size, [5, 10, 20, 50, 100], class: "form-select mx-1", style: "display: inline; width: 80px" %> per page
         </.form>
       </div>
     </div>
