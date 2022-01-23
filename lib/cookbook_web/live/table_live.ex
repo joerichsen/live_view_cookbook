@@ -3,6 +3,14 @@ defmodule CookbookWeb.TableLive do
 
   def render(assigns) do
     ~H"""
+    <div class="row">
+      <div class="col">
+        <.form let={f} for={@page_size_changeset} as="page_size" phx-change="change_page_size">
+          <%= select f, :page_size, [5, 10, 20, 50, 100], class: "form-select" %>
+        </.form>
+      </div>
+    </div>
+
     <table class="table table-striped">
       <thead>
         <tr>
@@ -74,6 +82,15 @@ defmodule CookbookWeb.TableLive do
     {:noreply, socket |> assign(page: 1) |> sort() |> paginate()}
   end
 
+  def handle_event("change_page_size", %{"page_size" => params}, socket) do
+    page_size = page_size_changeset(params).changes.page_size
+
+    {:noreply,
+     socket
+     |> assign(page_size: page_size, page: 1, page_size_changeset: page_size_changeset(params))
+     |> paginate()}
+  end
+
   # Dates such as birthdays require special sorting in Elixir
   defp sort(%{assigns: %{sort_direction: sort_direction, sort_by: :birthday}} = socket) do
     rows =
@@ -101,12 +118,22 @@ defmodule CookbookWeb.TableLive do
   end
 
   defp reset_pagination_variables(socket) do
-    assign(socket, page: 1, page_size: 10)
+    page_size = 10
+
+    assign(socket,
+      page: 1,
+      page_size: page_size,
+      page_size_changeset: page_size_changeset(%{page_size: page_size})
+    )
+  end
+
+  defp page_size_changeset(params) do
+    {%{}, %{page_size: :integer}} |> Ecto.Changeset.cast(params, [:page_size])
   end
 
   defp assign_rows(socket) do
     rows =
-      Enum.map(1..50, fn _ ->
+      Enum.map(1..64, fn _ ->
         %{
           name: Faker.Person.first_name() <> " " <> Faker.Person.last_name(),
           birthday: Faker.Date.date_of_birth(),
