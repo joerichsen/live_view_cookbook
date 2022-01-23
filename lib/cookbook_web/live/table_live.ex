@@ -87,7 +87,7 @@ defmodule CookbookWeb.TableLive do
         assign(socket, sort_by: sort_by, sort_direction: :asc)
       end
 
-    {:noreply, socket |> assign(page: 1) |> filter() |> sort() |> paginate()}
+    {:noreply, socket |> assign(page: 1) |> sort() |> paginate()}
   end
 
   def handle_event("change_page_size", %{"page_size" => params}, socket) do
@@ -102,7 +102,7 @@ defmodule CookbookWeb.TableLive do
   def handle_event("filter", %{"filter" => params}, socket) do
     {:noreply,
      socket
-     |> assign(filter_changeset: filter_changeset(params))
+     |> assign(filter_changeset: filter_changeset(params), page: 1)
      |> filter()
      |> sort()
      |> paginate()}
