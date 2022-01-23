@@ -192,7 +192,7 @@ defmodule CookbookWeb.TableLive do
 
   defp assign_rows(socket) do
     rows =
-      Enum.map(1..64, fn _ ->
+      Enum.map(1..54, fn _ ->
         %{
           name: Faker.Person.first_name() <> " " <> Faker.Person.last_name(),
           birthday: Faker.Date.date_of_birth(),
