@@ -22,15 +22,22 @@ defmodule CookbookWeb.TableLive do
       </tbody>
     </table>
 
-    <nav>
-      <ul class="pagination">
-        <li class={"page-item #{@page == 1 && "disabled" || ""}"}><a class="page-link" href="#" phx-click="goto_page" phx-value-page={@page - 1}>Previous</a></li>
-        <%= for page <- (1..@total_pages) do %>
-          <li class={"page-item #{page == @page && "active" || ""}"}><a class="page-link" href="#" phx-click="goto_page" phx-value-page={page}><%= page %></a></li>
-        <% end %>
-        <li class={"page-item #{@page == @total_pages && "disabled" || ""}"}><a class="page-link" href="#" phx-click="goto_page" phx-value-page={@page + 1}>Next</a></li>
-      </ul>
-    </nav>
+    <div class="row">
+      <div class="col">
+        Showing <%= (@page - 1) * @page_size + 1 %> to <%= @page * @page_size %> of <%= length(@rows) %> entries
+      </div>
+      <div class="col">
+        <nav class="float-end">
+          <ul class="pagination">
+            <li class={"page-item #{@page == 1 && "disabled" || ""}"}><a class="page-link" href="#" phx-click="goto_page" phx-value-page={@page - 1}>Previous</a></li>
+            <%= for page <- (1..@total_pages) do %>
+              <li class={"page-item #{page == @page && "active" || ""}"}><a class="page-link" href="#" phx-click="goto_page" phx-value-page={page}><%= page %></a></li>
+            <% end %>
+            <li class={"page-item #{@page == @total_pages && "disabled" || ""}"}><a class="page-link" href="#" phx-click="goto_page" phx-value-page={@page + 1}>Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
     """
   end
 
