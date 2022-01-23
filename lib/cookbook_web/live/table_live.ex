@@ -40,7 +40,7 @@ defmodule CookbookWeb.TableLive do
     </table>
 
     <div class="row">
-      <div class="col">
+      <div class="col mb-2">
         Showing <%= min((@page - 1) * @page_size + 1, length(@filtered_rows)) %> to <%= min(@page * @page_size, length(@filtered_rows)) %> of <%= length(@filtered_rows) %> entries
       </div>
       <div class="col">
