@@ -26,10 +26,19 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 
 let Hooks = {}
+
+// Hook for the Fullcalendar demo
 Hooks.FullCalendar = {
   mounted() {
     calendar = new FullCalendar.Calendar(this.el, { events: '/events' });
     calendar.render();
+  }
+}
+
+// Hook for the focus demo
+Hooks.FocusOnMount = {
+  mounted() {
+    this.el.focus()
   }
 }
 
