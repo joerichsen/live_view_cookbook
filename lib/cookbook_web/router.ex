@@ -33,6 +33,7 @@ defmodule CookbookWeb.Router do
     get "/events", EventController, :index
     live "/table", TableLive
     live "/focus_and_copy", FocusAndCopyLive
+    live "/browse_files", BrowseFilesLive
   end
 
   # Other scopes may use custom stacks.
