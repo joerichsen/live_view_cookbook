@@ -3,15 +3,21 @@ defmodule CookbookWeb.BrowseFilesLive do
 
   def render(assigns) do
     ~H"""
-    <.form let={f} for={@filter_changeset} as="filter" phx-change="filter">
-      <%= text_input f, :q, class: "form-control", phx_hook: "FocusOnMount" %>
-    </.form>
+    <div id="browse_files_demo" phx-hook="ArrowKeyEvents">
+      <.form let={f} for={@filter_changeset} as="filter" phx-change="filter">
+        <%= text_input f, :q, class: "form-control", phx_hook: "FocusOnMount" %>
+      </.form>
 
-    <ul class="list-group mt-3">
-      <%= for file <- @filtered_files do %>
-        <li class="list-group-item"><%= file %></li>
-      <% end %>
-    </ul>
+      <ul class="list-group mt-3">
+        <%= for {file, index} <- Enum.with_index(@filtered_files) do %>
+          <%= if index == @index do %>
+            <li class="list-group-item bg-primary text-white"><%= file %></li>
+          <% else %>
+            <li class="list-group-item"><%= file %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
     """
   end
 
@@ -23,7 +29,8 @@ defmodule CookbookWeb.BrowseFilesLive do
      assign(socket,
        files: files,
        filtered_files: filtered_files,
-       filter_changeset: filter_changeset()
+       filter_changeset: filter_changeset(),
+       index: 0
      )}
   end
 
@@ -39,8 +46,20 @@ defmodule CookbookWeb.BrowseFilesLive do
       end
 
     {:noreply,
-     socket |> assign(filter_changeset: filter_changeset, filtered_files: filtered_files)}
+     socket
+     |> assign(filter_changeset: filter_changeset, filtered_files: filtered_files, index: 0)}
   end
+
+  def handle_event("keydown", %{"key" => "ArrowDown"}, socket) do
+    {:noreply,
+     socket |> assign(index: min(socket.assigns.index + 1, length(socket.assigns.filtered_files)))}
+  end
+
+  def handle_event("keydown", %{"key" => "ArrowUp"}, socket) do
+    {:noreply, socket |> assign(index: max(socket.assigns.index - 1, 0))}
+  end
+
+  def handle_event("keydown", _, socket), do: {:noreply, socket}
 
   defp filter_changeset(params \\ %{}) do
     {%{}, %{q: :string}} |> Ecto.Changeset.cast(params, [:q])

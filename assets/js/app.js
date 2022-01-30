@@ -42,6 +42,15 @@ Hooks.FocusOnMount = {
   }
 }
 
+// Hook for the file explorer demo
+Hooks.ArrowKeyEvents = {
+  mounted() {
+    document.addEventListener('keydown', (event) => {
+      this.pushEvent("keydown", {key: event.key});
+    }, false);
+  }
+}
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: Hooks})
 
