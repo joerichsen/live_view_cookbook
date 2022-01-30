@@ -29,35 +29,12 @@ defmodule CookbookWeb.FrontPageLive do
       </div>
     <% end %>
 
-    <div class="row pt-3">
-      <div class="col-3">Dynamic nested form</div>
-      <div class="col">TODO</div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">File upload</div>
-      <div class="col">TODO</div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">File upload to S3</div>
-      <div class="col">TODO</div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Picture upload and cropping</div>
-      <div class="col">TODO</div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Using a date picker</div>
-      <div class="col">TODO</div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Navbar</div>
-      <div class="col">TODO</div>
-    </div>
+    <%= for todo <- Cookbook.Recipes.todos() do %>
+      <div class="row pt-3">
+        <div class="col-3"><%= todo %></div>
+        <div class="col">TODO</div>
+      </div>
+    <% end %>
 
     <div class="row pt-5">
       <div class="col">
