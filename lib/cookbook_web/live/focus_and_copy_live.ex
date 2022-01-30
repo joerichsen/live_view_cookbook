@@ -53,5 +53,4 @@ defmodule CookbookWeb.FocusAndCopyLive do
     token = :crypto.strong_rand_bytes(32) |> Base.encode64(padding: false) |> binary_part(0, 32)
     {:ok, assign(socket, token: token)}
   end
-
 end
