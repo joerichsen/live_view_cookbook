@@ -6,103 +6,28 @@ defmodule CookbookWeb.FrontPageLive do
     <h1>Welcome to the Phoenix LiveView Cookbook</h1>
     <h4>This contains examples of using <a href="https://github.com/phoenixframework/phoenix_live_view">Phoenix LiveView</a></h4>
 
-    <div class="row pt-3">
-      <div class="col-3">Hello World</div>
-      <div class="col">
-        <%= live_redirect "Demo", to: "/hello_world", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/hello_world_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
+    <%= for recipe <- Cookbook.Recipes.all() do %>
+      <div class="row pt-3">
+        <div class="col-3"><%= recipe.title %></div>
+        <div class="col">
+          <%= if Map.get(recipe, :link) do %>
+            <%= link "Demo", to: "/#{recipe.name}", class: "btn btn-outline-success btn-sm ml-5" %>
+          <% else %>
+            <%= live_redirect "Demo", to: "/#{recipe.name}", class: "btn btn-outline-success btn-sm ml-5" %>
+          <% end %>
 
-    <div class="row pt-3">
-      <div class="col-3">Progress</div>
-      <div class="col">
-        <%= live_redirect "Demo", to: "/progress", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/progress_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
+          <%= if Map.get(recipe, :code) do %>
+            <a href={"https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/#{recipe.code}_live.ex"} class="btn btn-outline-primary btn-sm">Code</a>
+          <% else %>
+            <a href={"https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/#{recipe.name}_live.ex"} class="btn btn-outline-primary btn-sm">Code</a>
+          <% end %>
 
-    <div class="row pt-3">
-      <div class="col-3">Form with validation</div>
-      <div class="col">
-        <%= live_redirect "Demo", to: "/form_with_validation", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/form_with_validation_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-        <a href="https://github.com/joerichsen/live_view_cookbook/commit/032298835e028ea41df4ab5dc4659af1f3c91474" class="btn btn-outline-primary btn-sm">Initial Commit</a>
+          <%= if Map.get(recipe, :commit) do %>
+            <a href={"https://github.com/joerichsen/live_view_cookbook/commit/#{recipe.commit}"} class="btn btn-outline-primary btn-sm">Initial Commit</a>
+          <% end %>
+        </div>
       </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Displaying flash messages</div>
-      <div class="col">
-        <%= live_redirect "Demo", to: "/flash", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/flash_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Showing a Bootstrap modal</div>
-      <div class="col">
-        <%= live_redirect "Demo", to: "/modal", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/modal_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-        <a href="https://github.com/joerichsen/live_view_cookbook/commit/0fdc7072ff9df7dbac3ad90801764d0f146499bd" class="btn btn-outline-primary btn-sm">Initial Commit</a>
-      </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Multistep wizard form</div>
-      <div class="col">
-        <%= live_redirect "Demo", to: "/multi_step_wizard", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/multi_step_wizard_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Upload and display a XLSX file</div>
-      <div class="col">
-        <%= live_redirect "Demo", to: "/xlsx_file_upload_and_display", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/xlsx_file_upload_and_display_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Keep LiveView state across redirects</div>
-      <div class="col">
-        <%= live_redirect "Demo", to: "/keep_liveview_across_redirect1", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/keep_liveview_across_redirect_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Live render markdown</div>
-      <div class="col">
-        <%= live_redirect "Demo", to: "/markdown_preview", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/markdown_preview_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">FullCalendar integration</div>
-      <div class="col">
-        <%= link "Demo", to: "/full_calendar", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/full_calendar_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">Table with filtering, sorting, and pagination</div>
-      <div class="col">
-        <%= link "Demo", to: "/table", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/table_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-3">JS: Focus element and copy to clipboard</div>
-      <div class="col">
-        <%= link "Demo", to: "/focus_and_copy", class: "btn btn-outline-success btn-sm ml-5" %>
-        <a href="https://github.com/joerichsen/live_view_cookbook/blob/main/lib/cookbook_web/live/focus_and_copy_live.ex" class="btn btn-outline-primary btn-sm">Code</a>
-      </div>
-    </div>
+    <% end %>
 
     <div class="row pt-3">
       <div class="col-3">Dynamic nested form</div>
