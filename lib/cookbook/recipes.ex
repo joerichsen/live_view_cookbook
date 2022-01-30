@@ -27,4 +27,15 @@ defmodule Cookbook.Recipes do
       %{title: "JS: Focus element and copy to clipboard", name: "focus_and_copy", link: true}
     ]
   end
+
+  def todos do
+    [
+      "Dynamic nested form",
+      "File upload",
+      "File upload to S3",
+      "Picture upload and cropping",
+      "Using a date picker",
+      "Navbar"
+    ]
+  end
 end
