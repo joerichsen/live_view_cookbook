@@ -19,7 +19,7 @@ defmodule CookbookWeb.GenerateQrCodeLive do
   end
 
   def handle_event("update_qr_code", %{"text" => %{"text" => text}}, socket) do
-    svg_as_base64 = QRCode.create(text) |> Result.and_then(&QRCode.Svg.to_base64(&1))
+    svg_as_base64 = text |> QRCode.create() |> Result.and_then(&QRCode.Svg.to_base64(&1))
     {:noreply, socket |> assign(svg_as_base64: svg_as_base64)}
   end
 
