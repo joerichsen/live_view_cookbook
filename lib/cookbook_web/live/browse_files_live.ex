@@ -52,7 +52,8 @@ defmodule CookbookWeb.BrowseFilesLive do
 
   def handle_event("keydown", %{"key" => "ArrowDown"}, socket) do
     {:noreply,
-     socket |> assign(index: min(socket.assigns.index + 1, length(socket.assigns.filtered_files) - 1))}
+     socket
+     |> assign(index: min(socket.assigns.index + 1, length(socket.assigns.filtered_files) - 1))}
   end
 
   def handle_event("keydown", %{"key" => "ArrowUp"}, socket) do

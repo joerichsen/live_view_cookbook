@@ -25,7 +25,8 @@ defmodule Cookbook.Recipes do
       %{title: "FullCalendar integration", name: "full_calendar", link: true},
       %{title: "Table with filtering, sorting, and pagination", name: "table", link: true},
       %{title: "JS: Focus element and copy to clipboard", name: "focus_and_copy", link: true},
-      %{title: "Browse files", name: "browse_files"}
+      %{title: "Browse files", name: "browse_files"},
+      %{title: "Generate a QR code", name: "generate_qr_code"}
     ]
   end
 

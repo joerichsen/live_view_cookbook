@@ -51,7 +51,8 @@ defmodule Cookbook.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:earmark, "~> 1.4"},
       {:xlsxir, "~> 1.6"},
-      {:faker, "~> 0.17.0"}
+      {:faker, "~> 0.17.0"},
+      {:qr_code, "~> 2.2"}
     ]
   end
 

@@ -34,6 +34,7 @@ defmodule CookbookWeb.Router do
     live "/table", TableLive
     live "/focus_and_copy", FocusAndCopyLive
     live "/browse_files", BrowseFilesLive
+    live "/generate_qr_code", GenerateQrCodeLive
   end
 
   # Other scopes may use custom stacks.
