@@ -17,8 +17,7 @@ defmodule CookbookWeb.GeolocationLive do
   end
 
   def handle_event("position", %{"lat" => lat, "long" => long}, socket) do
-    {:ok, coordinates} = Geocoder.call({lat, long})
-    address = coordinates.location.formatted_address
-    {:noreply, socket |> assign(address: address)}
+    info = LibLatLon.lookup({lat, long})
+    {:noreply, socket |> assign(address: info.address)}
   end
 end

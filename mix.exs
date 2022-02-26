@@ -53,7 +53,7 @@ defmodule Cookbook.MixProject do
       {:xlsxir, "~> 1.6"},
       {:faker, "~> 0.17.0"},
       {:qr_code, "~> 2.2"},
-      {:geocoder, "~> 1.1"}
+      {:lib_lat_lon, "~> 0.4"}
     ]
   end
 
