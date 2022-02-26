@@ -52,7 +52,8 @@ defmodule Cookbook.MixProject do
       {:earmark, "~> 1.4"},
       {:xlsxir, "~> 1.6"},
       {:faker, "~> 0.17.0"},
-      {:qr_code, "~> 2.2"}
+      {:qr_code, "~> 2.2"},
+      {:geocoder, "~> 1.1"}
     ]
   end
 
