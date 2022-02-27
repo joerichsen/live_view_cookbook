@@ -4,22 +4,22 @@ defmodule CookbookWeb.FullCalendarLive do
   def render(assigns) do
     ~H"""
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" />
 
     <h1>Birthday Calendar</h1>
 
     <.form let={f} for={:event} phx-submit="add_event" class="mb-5">
       <div class="row">
         <div class="col">
-          <%= label f, :birthday %>
-          <%= date_input f, :birthday, class: "form-control" %>
+          <%= label(f, :birthday) %>
+          <%= date_input(f, :birthday, class: "form-control") %>
         </div>
         <div class="col">
-          <%= label f, :name %>
-          <%= text_input f, :name, placeholder: "Enter name", class: "form-control" %>
+          <%= label(f, :name) %>
+          <%= text_input(f, :name, placeholder: "Enter name", class: "form-control") %>
         </div>
         <div class="col pt-4">
-          <%= submit "Add Event", class: "btn btn-sm btn-primary" %>
+          <%= submit("Add Event", class: "btn btn-sm btn-primary") %>
         </div>
       </div>
     </.form>

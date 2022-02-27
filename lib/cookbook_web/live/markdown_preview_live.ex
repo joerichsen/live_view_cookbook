@@ -7,21 +7,19 @@ defmodule CookbookWeb.MarkdownPreviewLive do
   def render(assigns) do
     ~H"""
     <div class="row">
-
       <div class="col">
         <h4>Please write a summary using Markdown</h4>
         <.form let={f} for={@changeset} phx-change="change" class="mb-5">
           <div class="mb-3">
-            <%= textarea f, :summary, class: "form-control", rows: 20 %>
+            <%= textarea(f, :summary, class: "form-control", rows: 20) %>
           </div>
         </.form>
       </div>
 
       <div class="col">
         <h4>Live preview</h4>
-        <%= raw Earmark.as_html!(@changeset.changes[:summary]) %>
+        <%= raw(Earmark.as_html!(@changeset.changes[:summary])) %>
       </div>
-
     </div>
     """
   end

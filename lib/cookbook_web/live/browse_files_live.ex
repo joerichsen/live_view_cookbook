@@ -5,7 +5,7 @@ defmodule CookbookWeb.BrowseFilesLive do
     ~H"""
     <div id="browse_files_demo" phx-hook="ArrowKeyEvents">
       <.form let={f} for={@filter_changeset} as="filter" phx-change="filter">
-        <%= text_input f, :q, class: "form-control", phx_hook: "FocusOnMount" %>
+        <%= text_input(f, :q, class: "form-control", phx_hook: "FocusOnMount") %>
       </.form>
 
       <ul class="list-group mt-3">

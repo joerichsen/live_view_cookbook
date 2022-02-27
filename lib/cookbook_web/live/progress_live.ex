@@ -6,12 +6,23 @@ defmodule CookbookWeb.ProgressLive do
   def render(assigns) do
     ~H"""
     <div class="progress">
-      <div class="progress-bar" role="progressbar" style={"width: #{@progress}%;"} aria-valuenow={@progress} aria-valuemin="0" aria-valuemax="100"><%= @progress %>%</div>
+      <div
+        class="progress-bar"
+        role="progressbar"
+        style={"width: #{@progress}%;"}
+        aria-valuenow={@progress}
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        <%= @progress %>%
+      </div>
     </div>
 
     <div class="mt-5">
       <%= if @completed == 0 do %>
-        <a href="#" phx-click="start-long-runnning_task" class="btn btn-success">Start long running task</a>
+        <a href="#" phx-click="start-long-runnning_task" class="btn btn-success">
+          Start long running task
+        </a>
       <% else %>
         Completed <%= @completed %> of <%= @number_of_slow_function_calls %> slow function calls.
       <% end %>

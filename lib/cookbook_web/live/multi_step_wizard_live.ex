@@ -56,28 +56,35 @@ defmodule CookbookWeb.MultiStepWizardLive do
       <.step step={3} current_step={@current_step} />
     </div>
 
-    <.form let={f} for={@changeset} id="wizard_form" phx-change="validate" phx-submit="submit" novalidate>
+    <.form
+      let={f}
+      for={@changeset}
+      id="wizard_form"
+      phx-change="validate"
+      phx-submit="submit"
+      novalidate
+    >
       <%= if @current_step == 1 do %>
         <div class="mb-3">
-          <%= label f, :title %>
-          <%= text_input f, :title, class: "form-control", placeholder: "Enter title" %>
-          <%= error_tag f, :title %>
+          <%= label(f, :title) %>
+          <%= text_input(f, :title, class: "form-control", placeholder: "Enter title") %>
+          <%= error_tag(f, :title) %>
         </div>
       <% end %>
 
       <%= if @current_step == 2 do %>
         <div class="mb-3">
-          <%= label f, :summary %>
-          <%= textarea f, :summary, class: "form-control", placeholder: "Add a short summary" %>
-          <%= error_tag f, :summary %>
+          <%= label(f, :summary) %>
+          <%= textarea(f, :summary, class: "form-control", placeholder: "Add a short summary") %>
+          <%= error_tag(f, :summary) %>
         </div>
       <% end %>
 
       <%= if @current_step == 3 do %>
         <div class="mb-3">
-          <%= label f, :pages %>
-          <%= number_input f, :pages, class: "form-control", placeholder: "Enter the number of pages" %>
-          <%= error_tag f, :pages %>
+          <%= label(f, :pages) %>
+          <%= number_input(f, :pages, class: "form-control", placeholder: "Enter the number of pages") %>
+          <%= error_tag(f, :pages) %>
         </div>
       <% end %>
 

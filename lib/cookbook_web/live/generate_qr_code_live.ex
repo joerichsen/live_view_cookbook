@@ -4,7 +4,7 @@ defmodule CookbookWeb.GenerateQrCodeLive do
   def render(assigns) do
     ~H"""
     <.form let={f} for={@changeset} as="text" phx-change="update_qr_code" class="mb-5">
-      <%= text_input f, :text, class: "form-control", placeholder: "Enter a text or a URL" %>
+      <%= text_input(f, :text, class: "form-control", placeholder: "Enter a text or a URL") %>
     </.form>
 
     <%= if @svg_as_base64 do %>

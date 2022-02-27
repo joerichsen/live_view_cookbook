@@ -8,7 +8,9 @@ defmodule CookbookWeb.FlashLive do
         <button phx-click="show-flash-success" class="btn btn-success">Try me!</button>
       </div>
       <div class="col-8">
-        <button phx-click="show-flash-fail" class="btn btn-danger">Press this dangerous button</button>
+        <button phx-click="show-flash-fail" class="btn btn-danger">
+          Press this dangerous button
+        </button>
       </div>
     </div>
 

@@ -6,15 +6,23 @@ defmodule CookbookWeb.TableLive do
     <div class="row">
       <div class="col">
         <.form let={f} for={@page_size_changeset} as="page_size" phx-change="change_page_size">
-          Showing <%= select f, :page_size, [5, 10, 20, 50, 100], class: "form-select mx-1", style: "display: inline; width: 80px" %> per page
+          Showing
+          <%= select(f, :page_size, [5, 10, 20, 50, 100],
+            class: "form-select mx-1",
+            style: "display: inline; width: 80px"
+          ) %> per page
         </.form>
       </div>
 
       <div class="col">
         <.form let={f} for={@filter_changeset} as="filter" phx-change="filter">
           <div class="row">
-            <div class="col"><%= text_input f, :q, class: "form-control", placeholder: "Search by name" %></div>
-            <div class="col"><%= multiple_select f, :favorite_colors, @favorite_colors, class: "form-select" %></div>
+            <div class="col">
+              <%= text_input(f, :q, class: "form-control", placeholder: "Search by name") %>
+            </div>
+            <div class="col">
+              <%= multiple_select(f, :favorite_colors, @favorite_colors, class: "form-select") %>
+            </div>
           </div>
         </.form>
       </div>
@@ -25,7 +33,9 @@ defmodule CookbookWeb.TableLive do
         <tr>
           <.th field={:name} sort_direction={@sort_direction} sort_by={@sort_by}>Name</.th>
           <.th field={:birthday} sort_direction={@sort_direction} sort_by={@sort_by}>Birthday</.th>
-          <.th field={:favorite_color} sort_direction={@sort_direction} sort_by={@sort_by}>Favorite Color</.th>
+          <.th field={:favorite_color} sort_direction={@sort_direction} sort_by={@sort_by}>
+            Favorite Color
+          </.th>
         </tr>
       </thead>
       <tbody>
@@ -41,16 +51,28 @@ defmodule CookbookWeb.TableLive do
 
     <div class="row">
       <div class="col mb-2">
-        Showing <%= min((@page - 1) * @page_size + 1, length(@filtered_rows)) %> to <%= min(@page * @page_size, length(@filtered_rows)) %> of <%= length(@filtered_rows) %> entries
+        Showing <%= min((@page - 1) * @page_size + 1, length(@filtered_rows)) %> to
+        <%= min(@page * @page_size, length(@filtered_rows)) %> of <%= length(@filtered_rows) %>
+        entries
       </div>
       <div class="col">
         <nav class="float-end">
           <ul class="pagination">
-            <li class={"page-item #{@page == 1 && "disabled" || ""}"}><a class="page-link" href="#" phx-click="goto_page" phx-value-page={@page - 1}>Previous</a></li>
+            <li class={"page-item #{(@page == 1 && "disabled") || ""}"}>
+              <a class="page-link" href="#" phx-click="goto_page" phx-value-page={@page - 1}>
+                Previous
+              </a>
+            </li>
             <%= for page <- (1..@total_pages) do %>
-              <li class={"page-item #{page == @page && "active" || ""}"}><a class="page-link" href="#" phx-click="goto_page" phx-value-page={page}><%= page %></a></li>
+              <li class={"page-item #{(page == @page && "active") || ""}"}>
+                <a class="page-link" href="#" phx-click="goto_page" phx-value-page={page}>
+                  <%= page %>
+                </a>
+              </li>
             <% end %>
-            <li class={"page-item #{@page == @total_pages && "disabled" || ""}"}><a class="page-link" href="#" phx-click="goto_page" phx-value-page={@page + 1}>Next</a></li>
+            <li class={"page-item #{(@page == @total_pages && "disabled") || ""}"}>
+              <a class="page-link" href="#" phx-click="goto_page" phx-value-page={@page + 1}>Next</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -206,7 +228,6 @@ defmodule CookbookWeb.TableLive do
   def th(assigns) do
     ~H"""
     <th phx-click="sort" phx-value-sort_by={@field} phx-value-sort_direction={@sort_direction}>
-
       <%= render_slot(@inner_block) %>
 
       <%= if @sort_by == @field do %>

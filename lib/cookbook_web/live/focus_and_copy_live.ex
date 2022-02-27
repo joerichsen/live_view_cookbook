@@ -18,7 +18,9 @@ defmodule CookbookWeb.FocusAndCopyLive do
         <input type="text" id="user_email" class="form-control" />
       </div>
       <div class="col">
-        <button class="btn btn-primary" phx-click={JS.dispatch("set-focus", to: "#user_email")}>Set focus</button>
+        <button class="btn btn-primary" phx-click={JS.dispatch("set-focus", to: "#user_email")}>
+          Set focus
+        </button>
       </div>
     </div>
 
@@ -31,7 +33,15 @@ defmodule CookbookWeb.FocusAndCopyLive do
     <h4 class="mt-5">Copy to clipboard example</h4>
     <div class="input-group mb-3">
       <input type="text" id="token" value={@token} class="form-control" />
-      <span class="input-group-text" role="button" phx-click={JS.dispatch("copy-to-clipboard", to: "#token") |> JS.hide(to: "#clipboard_icon") |> JS.show(to: "#copied_to_clipboard_icon")}>
+      <span
+        class="input-group-text"
+        role="button"
+        phx-click={
+          JS.dispatch("copy-to-clipboard", to: "#token")
+          |> JS.hide(to: "#clipboard_icon")
+          |> JS.show(to: "#copied_to_clipboard_icon")
+        }
+      >
         <i class="bi bi-clipboard" id="clipboard_icon"></i>
         <i class="bi bi-check text-success" style="display: none" id="copied_to_clipboard_icon"></i>
       </span>
