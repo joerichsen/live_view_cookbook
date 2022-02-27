@@ -48,6 +48,8 @@ defmodule CookbookWeb.XlxsFileUploadAndDisplayLive do
 
     [headers | rows] = rows
 
+    rows = rows |> Enum.reject(&blank_row?(&1))
+
     {:noreply, socket |> assign(headers: headers, rows: rows)}
   end
 
@@ -57,4 +59,6 @@ defmodule CookbookWeb.XlxsFileUploadAndDisplayLive do
   defp format({_year, _month, _day} = val), do: Date.from_erl!(val)
   defp format(nil), do: ""
   defp format(_), do: "UNKNOWN TYPE"
+
+  defp blank_row?(row), do: row |> Enum.all?(&(&1 == nil))
 end
