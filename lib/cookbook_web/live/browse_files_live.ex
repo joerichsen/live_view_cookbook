@@ -69,14 +69,14 @@ defmodule CookbookWeb.BrowseFilesLive do
   defp files do
     directory = "/tmp/live_view_cookbook"
 
-    if !File.exists?(directory) do
+    if File.exists?(directory) do
+      System.cmd("git", "pull origin main" |> String.split(" "), cd: directory)
+    else
       System.cmd(
         "git",
         "clone --branch main --depth=1 https://github.com/joerichsen/live_view_cookbook.git #{directory}"
         |> String.split(" ")
       )
-    else
-      System.cmd("git", "pull origin main" |> String.split(" "), cd: directory)
     end
 
     {files, 0} = System.cmd("git", ["ls-files"], cd: directory)
