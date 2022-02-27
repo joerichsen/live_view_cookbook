@@ -53,7 +53,8 @@ defmodule Cookbook.MixProject do
       {:xlsxir, "~> 1.6"},
       {:faker, "~> 0.17.0"},
       {:qr_code, "~> 2.2"},
-      {:lib_lat_lon, "~> 0.4"}
+      {:lib_lat_lon, "~> 0.4"},
+      {:heex_formatter, github: "feliperenan/heex_formatter"}
     ]
   end
 
