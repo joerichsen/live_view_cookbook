@@ -3,7 +3,7 @@ defmodule CookbookWeb.FullCalendarLive do
 
   def render(assigns) do
     ~H"""
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" />
 
     <h1>Birthday Calendar</h1>
