@@ -59,6 +59,15 @@ Hooks.GetGeolocation = {
   }
 }
 
+// Hook for the Sheet JS demo
+Hooks.SheetJS = {
+  mounted() {
+    window.addEventListener("rows_added", (event) => {
+      this.pushEvent("rows_added", event.detail);
+    })
+  }
+}
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: Hooks})
 
