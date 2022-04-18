@@ -39,7 +39,7 @@ defmodule CookbookWeb.SheetJsLive do
           var data = e.target.result;
           var workbook = XLSX.read(e.target.result);
           var worksheet = workbook.Sheets[workbook.SheetNames[0]];
-          var jsa = XLSX.utils.sheet_to_json(worksheet, {});
+          var jsa = XLSX.utils.sheet_to_json(worksheet, {header: 1});
 
           const event = new CustomEvent('rows_added', { detail: jsa });
           window.dispatchEvent(event);
@@ -57,9 +57,7 @@ defmodule CookbookWeb.SheetJsLive do
   end
 
   def handle_event("rows_added", rows, socket) do
-    first_row = List.first(rows)
-    headers = Map.keys(first_row)
-    rows = rows |> Enum.map(&Map.values(&1))
+    [headers | rows] = rows
     {:noreply, socket |> assign(headers: headers, rows: rows)}
   end
 end
