@@ -54,6 +54,7 @@ defmodule Cookbook.MixProject do
       {:faker, "~> 0.17.0"},
       {:qr_code, "~> 2.2"},
       {:lib_lat_lon, "~> 0.4"},
+      {:nextexif, "~> 0.0"},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
